@@ -1,6 +1,6 @@
 package ndatas.grid {
-	import ngine.pool.IReusable;
-	
+	import npooling.IReusable;
+
 	public interface IGridObject extends IReusable {
 		function get indexX():uint;
 		function get indexY():uint;

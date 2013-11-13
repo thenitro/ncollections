@@ -1,6 +1,6 @@
 package ndatas.uf {
-	import ngine.pool.IReusable;
-	import ngine.pool.Pool;
+	import npooling.IReusable;
+	import npooling.Pool;
 	
 	public final class QuickFindUF implements IReusable {
 		private static var _pool:Pool = Pool.getInstance();

@@ -1,7 +1,7 @@
 package ndatas {
 	import flash.utils.Dictionary;
 	
-	import ngine.pool.Pool;
+	import npooling.Pool;
 	
 	public class MatrixMxN {
 		protected static var _pool:Pool = Pool.getInstance();
