@@ -1,8 +1,8 @@
 package ndatas {
 	import flash.utils.Dictionary;
 	
-	import ngine.pool.IReusable;
-	import ngine.pool.Pool;
+	import npooling.IReusable;
+	import npooling.Pool;
 	
 	public final class LinkedList implements IReusable {
 		private static var _pool:Pool = Pool.getInstance();
