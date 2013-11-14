@@ -12,10 +12,10 @@ package ndatas {
 		private var _prev:Dictionary;
 		private var _next:Dictionary;
 		
-		private var _size:int;
+		private var _count:int;
 		
 		public function LinkedList() {
-			_size = 0;
+			_count = 0;
 			
 			_header = {};
 			
@@ -40,8 +40,8 @@ package ndatas {
 			return LinkedList;
 		};
 		
-		public function get size():int {
-			return _size;
+		public function get count():int {
+			return _count;
 		}
 		
 		public function contains(pItem:*):Boolean {
@@ -67,7 +67,7 @@ package ndatas {
 			_next[_prev[pItem]] = pItem;
 			_prev[_header] = pItem;
 			
-			_size++;
+			_count++;
 		};
 		
 		public function remove(pItem:*):void {
@@ -81,7 +81,7 @@ package ndatas {
 			delete _prev[pItem];
 			delete _next[pItem];
 			
-			_size--;
+			_count--;
 		};
 		
 		public function next(pItem:*):* {
