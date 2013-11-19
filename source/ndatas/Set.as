@@ -1,8 +1,8 @@
 package ndatas {
 	import flash.utils.Dictionary;
 	
-	import ngine.pool.IReusable;
-	import ngine.pool.Pool;
+	import npooling.IReusable;
+	import npooling.Pool;
 	
 	public final class Set implements IReusable {
 		private static var _pool:Pool = Pool.getInstance();
@@ -36,7 +36,7 @@ package ndatas {
 			return _hash;
 		};
 		
-		public function get array():Array {
+		public function get list():Array {
 			return _list;
 		};
 		

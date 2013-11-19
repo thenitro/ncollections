@@ -1,9 +1,10 @@
 package ndatas {
 	import flash.utils.Dictionary;
 	
+	import npooling.IReusable;
 	import npooling.Pool;
 	
-	public class MatrixMxN {
+	public class MatrixMxN implements IReusable {
 		protected static var _pool:Pool = Pool.getInstance();
 		
 		private var _rows:Dictionary;
@@ -109,6 +110,8 @@ package ndatas {
 			_sizeY = 0;
 			
 			_count = 0;
+			
+			_rows = new Dictionary();
 		};
 		
 		public function clone():MatrixMxN {
