@@ -92,7 +92,7 @@ package ndatas {
 			return _prev[pItem];
 		};
 		
-		public function poolPrepare():void {
+		public function clean():void {
 			_next[_header] = _prev[_header] = _header;
 			
 			var id:Object;
@@ -104,6 +104,10 @@ package ndatas {
 			for (id in _prev) {
 				delete _prev[id];
 			}
+		};
+		
+		public function poolPrepare():void {
+			clean();
 		};
 		
 		public function dispose():void {
