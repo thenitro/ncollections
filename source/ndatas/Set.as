@@ -28,6 +28,13 @@ package ndatas {
 			return result;
 		};
 		
+		public static function fromList(pList:Array):Set {
+			var result:Set = Set.EMPTY;
+				result.fromList(pList);
+				
+			return result;
+		};
+		
 		public function get reflection():Class {
 			return Set;
 		}
@@ -38,6 +45,12 @@ package ndatas {
 		
 		public function get list():Array {
 			return _list;
+		};
+		
+		public function fromList(pList:Array):void {
+			for each (var object:Object in pList) {
+				add(object);
+			}
 		};
 		
 		public function add(pData:Object):void {
