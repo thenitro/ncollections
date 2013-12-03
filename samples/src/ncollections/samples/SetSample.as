@@ -3,9 +3,9 @@ package ncollections.samples {
 	
 	import starling.display.Sprite;
 	
-	public final class TSet extends Sprite {
+	public final class SetSample extends Sprite {
 		
-		public function TSet() {
+		public function SetSample() {
 			super();
 			intersectsSample();
 			diffSample();

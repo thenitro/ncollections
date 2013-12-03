@@ -1,6 +1,7 @@
 package {
+	import ncollections.samples.IteratorSample;
+	import ncollections.samples.SetSample;
 	import ncollections.samples.TDictionarySample;
-	import ncollections.samples.TSet;
 	
 	import ngine.display.DocumentClass;
 	
@@ -8,7 +9,8 @@ package {
 		
 		public function NDatas() {
 			//super(TDictionarySample);
-			super(TSet);
+			//super(SetSample);
+			super(IteratorSample);
 		};
 	};
 }
