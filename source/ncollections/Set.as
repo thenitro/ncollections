@@ -35,6 +35,54 @@ package ncollections {
 			return result;
 		};
 		
+		public static function insersection(pSetA:Set, pSetB:Set):Set {
+			var result:Set = Set.EMPTY;
+			
+			var iterator:Set = pSetA.count > pSetB.count ? pSetA : pSetB;
+			var donor:Set    = pSetA.count > pSetB.count ? pSetB : pSetA;
+			
+			for each (var value:* in iterator.list) {
+				if (donor.contains(value)) {
+					result.add(value);
+				}
+			}
+				
+			return result;
+		};
+		
+		public static function diff(pSetA:Set, pSetB:Set):Set {
+			var result:Set = Set.EMPTY;
+			
+			var iterator:Set = pSetA.count > pSetB.count ? pSetA : pSetB;
+			var donor:Set    = pSetA.count > pSetB.count ? pSetB : pSetA;
+			
+			var value:*;
+			
+			for each (value in iterator.list) {
+				if (!donor.contains(value)) {
+					result.add(value);
+				}
+			}
+			
+			for each (value in donor.list) {
+				if (!iterator.contains(value)) {
+					result.add(value);
+				}
+			}
+				
+			return result;
+		};
+		
+		public static function union(pSetA:Set, pSetB:Set):Set {
+			var result:Set = pSetA.clone();
+			
+			for each (var value:* in pSetB.list) {
+				result.add(value);
+			}
+			
+			return result;
+		};
+		
 		public function get reflection():Class {
 			return Set;
 		}
@@ -81,6 +129,16 @@ package ncollections {
 		
 		public function contains(pTarget:Object):Boolean {
 			return Boolean(_hash[pTarget]);
+		};
+		
+		public function clone():Set {
+			var result:Set = Set.EMPTY;
+			
+			for each (var value:* in list) {
+				result.add(value);
+			}
+			
+			return result;
 		};
 		
 		public function clean():void {
