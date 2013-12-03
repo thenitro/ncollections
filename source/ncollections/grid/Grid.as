@@ -1,5 +1,5 @@
-package ndatas.grid {
-	import ndatas.MatrixMxN;
+package ncollections.grid {
+	import ncollections.MatrixMxN;
 	
 	public class Grid extends MatrixMxN {
 		

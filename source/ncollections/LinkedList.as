@@ -1,4 +1,4 @@
-package ndatas {
+package ncollections {
 	import flash.utils.Dictionary;
 	
 	import npooling.IReusable;

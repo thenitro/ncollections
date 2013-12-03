@@ -1,4 +1,4 @@
-package ndatas.grid {
+package ncollections.grid {
 	import npooling.IReusable;
 
 	public interface IGridObject extends IReusable {
