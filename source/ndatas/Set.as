@@ -47,6 +47,10 @@ package ndatas {
 			return _list;
 		};
 		
+		public function get count():int {
+			return _count;
+		};
+		
 		public function fromList(pList:Array):void {
 			for each (var object:Object in pList) {
 				add(object);
@@ -80,7 +84,7 @@ package ndatas {
 		};
 		
 		public function clean():void {
-			for (var data:Object in _hash) {
+			for (var data:Object in _list) {
 				delete _hash[data];
 			}
 			

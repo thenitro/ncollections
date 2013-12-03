@@ -96,14 +96,21 @@ package ndatas {
 			_next[_header] = _prev[_header] = _header;
 			
 			var id:Object;
+			var temp:Array;
 			
 			for (id in _next) {
+				temp.push(id);
+			}
+			
+			for (id in temp) {
 				delete _next[id];
 			}
 			
-			for (id in _prev) {
+			for (id in temp) {
 				delete _prev[id];
 			}
+			
+			temp = null;
 		};
 		
 		public function poolPrepare():void {
