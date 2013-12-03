@@ -7,13 +7,17 @@ package ndatas {
 	public final class TDictionary implements IReusable {
 		private static var _pool:Pool = Pool.getInstance();
 		
-		private var _keys:Set;		
+		private var _keys:Set;
+		private var _values:Set;
+		
 		private var _raw:Dictionary;
 		
 		private var _count:int;
 		
 		public function TDictionary() {
-			_keys = Set.EMPTY;
+			_keys   = Set.EMPTY;
+			_values = Set.EMPTY;
+			
 			_raw  = new Dictionary();
 			
 			_count = 0;
@@ -42,8 +46,8 @@ package ndatas {
 			return _keys;
 		};
 		
-		public function get raw():Dictionary {
-			return _raw;
+		public function get values():Set {
+			return _values;
 		};
 		
 		public function add(pKey:*, pValue:*):void {
@@ -52,6 +56,8 @@ package ndatas {
 			}
 			
 			_keys.add(pKey);
+			_values.add(pValue);
+			
 			_raw[pKey] = pValue;
 		};
 		
@@ -67,6 +73,8 @@ package ndatas {
 			_count--;
 			
 			_keys.remove(pKey);
+			_values.remove(_raw[pKey]);
+			
 			delete _raw[pKey];
 		};
 		
@@ -86,6 +94,8 @@ package ndatas {
 			}
 			
 			_keys.clean();
+			_values.clean();
+			
 			_count = 0;
 		};
 		
@@ -97,6 +107,8 @@ package ndatas {
 			clean();
 			
 			_pool.put(_keys);
+			_pool.put(_values);
+			
 			_raw = null;
 		};
 	};
