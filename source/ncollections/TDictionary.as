@@ -34,6 +34,21 @@ package ncollections {
 			return result;
 		};
 		
+		public static function zip(pArrayA:Array, 
+								   pArrayB:Array):TDictionary {
+			if (pArrayA.length != pArrayB.length) {
+				return null;
+			}
+			
+			var result:TDictionary = EMPTY;
+				
+			for (var i:int = 0; i < pArrayA.length; i++) {
+				result.add(pArrayA[i], pArrayB[i]);
+			}
+			
+			return result;
+		};
+		
 		public function get reflection():Class {
 			return TDictionary;
 		};
