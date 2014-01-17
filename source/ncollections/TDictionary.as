@@ -8,7 +8,7 @@ package ncollections {
 		private static var _pool:Pool = Pool.getInstance();
 		
 		private var _keys:Set;
-		private var _values:Set;
+		private var _values:Array;
 		
 		private var _raw:Dictionary;
 		
@@ -16,7 +16,7 @@ package ncollections {
 		
 		public function TDictionary() {
 			_keys   = Set.EMPTY;
-			_values = Set.EMPTY;
+			_values = [];
 			
 			_raw  = new Dictionary();
 			
@@ -61,7 +61,7 @@ package ncollections {
 			return _keys;
 		};
 		
-		public function get values():Set {
+		public function get values():Array {
 			return _values;
 		};
 		
@@ -71,7 +71,7 @@ package ncollections {
 			}
 			
 			_keys.add(pKey);
-			_values.add(pValue);
+			_values.push(pValue);
 			
 			_raw[pKey] = pValue;
 		};
@@ -88,7 +88,7 @@ package ncollections {
 			_count--;
 			
 			_keys.remove(pKey);
-			_values.remove(_raw[pKey]);
+			_values.splice(_values.indexOf(_raw[pKey]), 1);
 			
 			delete _raw[pKey];
 		};
@@ -122,9 +122,9 @@ package ncollections {
 			clean();
 			
 			_pool.put(_keys);
-			_pool.put(_values);
 			
-			_raw = null;
+			_values = null;
+			_raw    = null;
 		};
 	};
 }
