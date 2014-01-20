@@ -46,7 +46,7 @@ package ncollections {
 			return MatrixMxN;
 		};
 		
-		public function add(pX:uint, pY:uint, pObject:Object):Object {
+		public function add(pX:uint, pY:uint, pObject:Object):Object {			
 			var cols:Dictionary = takeCols(pX);
 				cols[pY] = pObject;
 			
