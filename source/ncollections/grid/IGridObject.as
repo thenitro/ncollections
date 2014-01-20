@@ -2,10 +2,10 @@ package ncollections.grid {
 	import npooling.IReusable;
 
 	public interface IGridObject extends IReusable {
-		function get indexX():uint;
-		function get indexY():uint;
+		function get indexX():int;
+		function get indexY():int;
 		
-		function updateIndex(pX:uint, pY:uint):void;
+		function updateIndex(pX:int, pY:int):void;
 		
 		function clone():IGridObject;
 	};

@@ -14,9 +14,12 @@ package ncollections {
 		
 		private var _count:uint;
 		
+		private var _items:Set;
+		
 		public function MatrixMxN() {
 			_count = 0;
 			_rows  = new Dictionary();
+			_items = Set.EMPTY;
 		};
 		
 		public static function get EMPTY():MatrixMxN {
@@ -45,8 +48,12 @@ package ncollections {
 		public function get reflection():Class {
 			return MatrixMxN;
 		};
+
+		public function get items():Set {
+			return _items;
+		};
 		
-		public function add(pX:uint, pY:uint, pObject:Object):Object {			
+		public function add(pX:uint, pY:uint, pObject:Object):Object {
 			var cols:Dictionary = takeCols(pX);
 				cols[pY] = pObject;
 			
@@ -56,17 +63,19 @@ package ncollections {
 			
 			_count++;
 			
+			_items.add(pObject);
+			
 			return pObject;
 		};
 		
 		public function take(pX:uint, pY:uint):Object {
-			var cols:Dictionary = _rows[pX];
+			var cols:Dictionary = _rows[pX] as Dictionary;
 			
 			if (!cols) {
 				return null;
 			}
 			
-			return cols[pY];
+			return cols[pY] as Object;
 		};
 		
 		public function remove(pX:uint, pY:uint):void {
@@ -77,6 +86,8 @@ package ncollections {
 			}
 			
 			_count--;
+			
+			_items.remove(cols[pY]);
 			
 			delete cols[pY];
 		};
