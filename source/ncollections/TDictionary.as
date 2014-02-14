@@ -76,8 +76,8 @@ package ncollections {
 			_raw[pKey] = pValue;
 		};
 		
-		public function get(pKey:*):* {
-			return _raw[pKey];
+		public function get(pKey:*, pDefault:* = null):* {
+			return _raw[pKey] || pDefault;
 		};
 		
 		public function remove(pKey:*):void {
