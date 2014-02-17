@@ -66,14 +66,20 @@ package ncollections {
 		};
 		
 		public function add(pKey:*, pValue:*):void {
-			if (!_keys.contains(pKey)) {
-				_count++;
-			}
-			
-			_keys.add(pKey);
-			_values.push(pValue);
-			
-			_raw[pKey] = pValue;
+            if (_raw[pKey] === pValue) {
+                return;
+            }
+
+			if (_keys.contains(pKey)) {
+                _values.splice(_values.indexOf(_raw[pKey]), 1, pValue);
+			} else {
+                _keys.add(pKey);
+                _values.push(pValue);
+
+                _count++;
+            }
+
+            _raw[pKey] = pValue;
 		};
 		
 		public function get(pKey:*, pDefault:* = null):* {
