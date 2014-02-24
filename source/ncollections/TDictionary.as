@@ -99,6 +99,10 @@ package ncollections {
 			delete _raw[pKey];
 		};
 		
+		public function contains(pKey:*):Boolean {
+			return Boolean(_keys.contains(pKey));
+		};
+		
 		public function clone():TDictionary {
 			var result:TDictionary = EMPTY;
 				
