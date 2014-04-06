@@ -7,6 +7,17 @@ package ncollections.grid {
 			super();
 		};
 		
+		public static function get EMPTY():Grid {
+			var result:Grid = _pool.get(Grid) as Grid;
+			
+			if (!result) {
+				_pool.allocate(Grid, 1);
+				result = new Grid();
+			}
+			
+			return result;
+		};
+		
 		override public function get reflection():Class {
 			return Grid;
 		};
