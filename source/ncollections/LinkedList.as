@@ -96,7 +96,7 @@ package ncollections {
 			_next[_header] = _prev[_header] = _header;
 			
 			var id:Object;
-			var temp:Array;
+			var temp:Array = [];
 			
 			for (id in _next) {
 				temp.push(id);
