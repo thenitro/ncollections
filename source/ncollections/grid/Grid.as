@@ -34,6 +34,7 @@ package ncollections.grid {
 			var grid:Grid = _pool.get(Grid) as Grid;
 			
 			if (!grid) {
+				_pool.allocate(Grid, 1);
 				grid = new Grid();
 			}
 			
