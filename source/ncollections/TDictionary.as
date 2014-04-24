@@ -119,7 +119,7 @@ package ncollections {
 			}
 			
 			_keys.clean();
-			_values.clean();
+			_values.length = 0;
 			
 			_count = 0;
 		};
