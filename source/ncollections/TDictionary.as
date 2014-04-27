@@ -67,13 +67,13 @@ package ncollections {
 		
 		public function add(pKey:*, pValue:*):void {
             if (_raw[pKey] === pValue) {
-                return;
+				return;
             }
 
 			if (_keys.contains(pKey)) {
-                _values.splice(_values.indexOf(_raw[pKey]), 1, pValue);
+				_values.splice(_values.indexOf(_raw[pKey]), 1, pValue);
 			} else {
-                _keys.add(pKey);
+				_keys.add(pKey);
                 _values.push(pValue);
 
                 _count++;
@@ -114,14 +114,11 @@ package ncollections {
 		};
  		
 		public function clean():void {
-			for each (var key:* in _keys.list) {
-				delete _raw[key];
+			var keys:Array = _keys.list.concat();
+			
+			for each (var key:* in keys) {
+				remove(key);
 			}
-			
-			_keys.clean();
-			_values.length = 0;
-			
-			_count = 0;
 		};
 		
 		public function poolPrepare():void {
