@@ -6,7 +6,9 @@ package ncollections {
 	
 	public final class Set implements IReusable {
 		private static var _pool:Pool = Pool.getInstance();
-		
+
+        private var _disposed:Boolean;
+
 		private var _hash:Dictionary;
 		private var _list:Array;
 		
@@ -85,7 +87,11 @@ package ncollections {
 		
 		public function get reflection():Class {
 			return Set;
-		}
+		};
+
+        public function get disposed():Boolean {
+            return _disposed;
+        };
 		
 		public function get dict():Dictionary {
 			return _hash;
@@ -159,6 +165,8 @@ package ncollections {
 			
 			_hash = null;
 			_list = null;
+
+            _disposed = true;
 		};
 	}
 }

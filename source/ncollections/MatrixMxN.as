@@ -6,7 +6,9 @@ package ncollections {
 	
 	public class MatrixMxN implements IReusable {
 		protected static var _pool:Pool = Pool.getInstance();
-		
+
+        private var _disposed:Boolean;
+
 		private var _rows:Dictionary;
 		
 		private var _sizeX:uint;
@@ -48,6 +50,10 @@ package ncollections {
 		public function get reflection():Class {
 			return MatrixMxN;
 		};
+
+        public function get disposed():Boolean {
+            return _disposed;
+        };
 
 		public function get items():Set {
 			return _items;
@@ -149,6 +155,8 @@ package ncollections {
 		
 		public function dispose():void {
 			clean();
+
+            _disposed = true;
 		};
 	}
 }
