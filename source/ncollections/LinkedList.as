@@ -6,6 +6,8 @@ package ncollections {
 	
 	public final class LinkedList implements IReusable {
 		private static var _pool:Pool = Pool.getInstance();
+
+        private var _disposed:Boolean;
 		
 		private var _header:Object;
 		
@@ -39,6 +41,10 @@ package ncollections {
 		public function get reflection():Class {
 			return LinkedList;
 		};
+
+        public function get disposed():Boolean {
+            return _disposed;
+        };
 		
 		public function get count():int {
 			return _count;
@@ -118,6 +124,8 @@ package ncollections {
 		};
 		
 		public function dispose():void {
+            _disposed = true;
+
 			_header = null;
 			
 			_prev = null;
