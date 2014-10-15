@@ -1,12 +1,14 @@
 package ncollections {
-	import flash.utils.Dictionary;
-	
-	import npooling.IReusable;
-	import npooling.Pool;
-	
-	public final class TDictionary implements IReusable {
+    import flash.utils.Dictionary;
+
+    import npooling.IReusable;
+    import npooling.Pool;
+
+    public final class TDictionary implements IReusable {
 		private static var _pool:Pool = Pool.getInstance();
-		
+
+        private var _disposed:Boolean;
+
 		private var _keys:Set;
 		private var _values:Array;
 		
@@ -52,8 +54,12 @@ package ncollections {
 		public function get reflection():Class {
 			return TDictionary;
 		};
-		
-		public function get count():int {
+
+        public function get disposed():Boolean {
+            return _disposed;
+        };
+
+        public function get count():int {
 			return _count;
 		};
 		
@@ -126,6 +132,8 @@ package ncollections {
 		};
 		
 		public function dispose():void {
+            _disposed = true;
+
 			clean();
 			
 			_pool.put(_keys);
