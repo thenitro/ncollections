@@ -10,11 +10,14 @@ package ncollections {
         private var _disposed:Boolean;
 
 		private var _rows:Dictionary;
+
+        private var _minX:int;
+        private var _minY:int;
+
+		private var _maxX:int;
+		private var _maxY:int;
 		
-		private var _sizeX:uint;
-		private var _sizeY:uint;
-		
-		private var _count:uint;
+		private var _count:int;
 		
 		private var _items:Set;
 		
@@ -35,15 +38,23 @@ package ncollections {
 			return result;
 		};
 		
-		public function get sizeX():uint {
-			return _sizeX;
+		public function get minX():int {
+			return _minX;
 		};
 		
-		public function get sizeY():uint {
-			return _sizeY;
+		public function get minY():int {
+			return _minY;
 		};
-		
-		public function get count():uint {
+
+		public function get maxX():int {
+			return _maxX;
+		};
+
+		public function get maxY():int {
+			return _maxY;
+		};
+
+		public function get count():int {
 			return _count;
 		};
 		
@@ -59,12 +70,16 @@ package ncollections {
 			return _items;
 		};
 		
-		public function add(pX:uint, pY:uint, pObject:Object):Object {
+		public function add(pX:int, pY:int, pObject:Object):Object {
 			var cols:Dictionary = takeCols(pX);
 				cols[pY] = pObject;
-			
-			if (pY >= _sizeY) {
-				_sizeY = pY + 1;
+
+            if (pY < _minY) {
+                _minY = pY;
+            }
+
+			if (pY > _maxY) {
+				_maxY = pY;
 			}
 			
 			_count++;
@@ -74,7 +89,7 @@ package ncollections {
 			return pObject;
 		};
 		
-		public function take(pX:uint, pY:uint):Object {
+		public function take(pX:int, pY:int):Object {
 			var cols:Dictionary = _rows[pX] as Dictionary;
 			
 			if (!cols) {
@@ -84,7 +99,7 @@ package ncollections {
 			return cols[pY] as Object;
 		};
 		
-		public function remove(pX:uint, pY:uint):void {
+		public function remove(pX:int, pY:int):void {
 			var cols:Dictionary = _rows[pX];
 			
 			if (!cols) {
@@ -98,23 +113,27 @@ package ncollections {
 			delete cols[pY];
 		};
 		
-		public function takeCols(pX:uint):Dictionary {
+		public function takeCols(pX:int):Dictionary {
 			var cols:Dictionary = _rows[pX];
 			
 			if (!cols) {
 				cols = new Dictionary();
 				_rows[pX] = cols;
 			}
+
+            if (pX < _minX) {
+                _minX = pX;
+            }
 			
-			if (pX >= _sizeX) {
-				_sizeX = pX + 1;
+			if (pX > _maxX) {
+				_maxX = pX;
 			}
 			
 			return cols;
 		};
 		
-		public function swap(pObjectAX:uint, pObjectAY:uint, 
-							 pObjectBX:uint, pObjectBY:uint):void {
+		public function swap(pObjectAX:int, pObjectAY:int, 
+							 pObjectBX:int, pObjectBY:int):void {
 			var objectA:Object = take(pObjectAX, pObjectAY);
 			var objectB:Object = take(pObjectBX, pObjectBY);
 			
@@ -123,8 +142,11 @@ package ncollections {
 		};
 		
 		public function clean():void {
-			_sizeX = 0;
-			_sizeY = 0;
+            _minY = 0;
+            _minX = 0;
+
+			_maxX = 0;
+			_maxY = 0;
 			
 			_count = 0;
 			
@@ -138,8 +160,8 @@ package ncollections {
 				result = new MatrixMxN();
 			}
 			
-			for (var i:uint = 0; i < sizeX; i++) {
-				for (var j:uint = 0; j < sizeY; j++) {
+			for (var i:int = 0; i < maxX; i++) {
+				for (var j:int = 0; j < maxY; j++) {
 					if (take(i, j)) {
 						result.add(i, j, take(i, j).clone());
 					}

@@ -1,7 +1,9 @@
 package ncollections.grid {
 	import ncollections.MatrixMxN;
-	
-	public class Grid extends MatrixMxN {
+
+    import npathfinding.base.Node;
+
+    public class Grid extends MatrixMxN {
 		
 		public function Grid() {
 			super();
@@ -22,11 +24,11 @@ package ncollections.grid {
 			return Grid;
 		};
 		
-		override public function add(pX:uint, pY:uint, pObject:Object):Object {
-			if (pObject) {
+		override public function add(pX:int, pY:int, pObject:Object):Object {
+			if (pObject is Node) {
 				pObject.updateIndex(pX, pY);
 			}
-			
+
 			return super.add(pX, pY, pObject);
 		};
 		
@@ -38,8 +40,8 @@ package ncollections.grid {
 				grid = new Grid();
 			}
 			
-			for (var i:uint = 0; i < sizeX; i++) {
-				for (var j:uint = 0; j < sizeY; j++) {
+			for (var i:int = 0; i < maxX; i++) {
+				for (var j:int = 0; j < maxY; j++) {
 					if (take(i, j)) {
 						grid.add(i, j, take(i, j).clone());
 					}
