@@ -74,12 +74,12 @@ package ncollections {
 			var cols:Dictionary = takeCols(pX);
 				cols[pY] = pObject;
 
-            if (pY < _minY) {
-                _minY = pY;
+            if (pY <= _minY) {
+                _minY = pY - 1;
             }
 
-			if (pY > _maxY) {
-				_maxY = pY;
+			if (pY >= _maxY) {
+				_maxY = pY + 1;
 			}
 			
 			_count++;
@@ -121,12 +121,12 @@ package ncollections {
 				_rows[pX] = cols;
 			}
 
-            if (pX < _minX) {
-                _minX = pX;
+            if (pX <= _minX) {
+                _minX = pX - 1;
             }
 			
-			if (pX > _maxX) {
-				_maxX = pX;
+			if (pX >= _maxX) {
+				_maxX = pX + 1;
 			}
 			
 			return cols;

@@ -1,7 +1,5 @@
 package ncollections.grid {
-	import ncollections.MatrixMxN;
-
-    import npathfinding.base.Node;
+    import ncollections.MatrixMxN;
 
     public class Grid extends MatrixMxN {
 		
@@ -25,7 +23,7 @@ package ncollections.grid {
 		};
 		
 		override public function add(pX:int, pY:int, pObject:Object):Object {
-			if (pObject is Node) {
+			if (pObject) {
 				pObject.updateIndex(pX, pY);
 			}
 
