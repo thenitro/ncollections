@@ -1,10 +1,10 @@
 package ncollections {
-	import flash.utils.Dictionary;
-	
-	import npooling.IReusable;
-	import npooling.Pool;
-	
-	public class MatrixMxN implements IReusable {
+    import flash.utils.Dictionary;
+
+    import npooling.IReusable;
+    import npooling.Pool;
+
+    public class MatrixMxN implements IReusable {
 		protected static var _pool:Pool = Pool.getInstance();
 
         private var _disposed:Boolean;
@@ -37,6 +37,20 @@ package ncollections {
 			
 			return result;
 		};
+
+        public static function fromArray(pInput:Array):MatrixMxN {
+            var result:MatrixMxN = _pool.get(MatrixMxN) as MatrixMxN;
+
+            for (var j:int = 0; j < pInput.length; j++) {
+                var row:Array = pInput[j] as Array;
+
+                for (var i:int = 0; i < row.length; i++) {
+                    result.add(i, j, row[i]);
+                }
+            }
+
+            return result;
+        };
 		
 		public function get minX():int {
 			return _minX;
@@ -75,7 +89,7 @@ package ncollections {
 				cols[pY] = pObject;
 
             if (pY <= _minY) {
-                _minY = pY - 1;
+                _minY = pY;
             }
 
 			if (pY >= _maxY) {
@@ -90,14 +104,45 @@ package ncollections {
 		};
 		
 		public function take(pX:int, pY:int):Object {
+            if (pX < minX || pY < minY || pX > maxX || pY > maxY) {
+                return null;
+            }
+
 			var cols:Dictionary = _rows[pX] as Dictionary;
-			
 			if (!cols) {
 				return null;
 			}
 			
 			return cols[pY] as Object;
 		};
+
+        public function takeByPattern(pIndexX:int, pIndexY:int,
+                                      pPattern:Array):Array {
+            var medianaX:int = pPattern[0].length / 2;
+            var medianaY:int = pPattern.length / 2;
+
+            var patternIndexI:int;
+            var patternIndexJ:int;
+
+            var matrixIndexI:int;
+            var matrixIndexJ:int;
+
+            var result:Array = [];
+
+            for (patternIndexJ = 0, matrixIndexJ = pIndexY - medianaY; patternIndexJ < pPattern.length; patternIndexJ++, matrixIndexJ++) {
+                var row:Array = pPattern[patternIndexJ] as Array;
+
+                for (patternIndexI = 0, matrixIndexI = pIndexX - medianaX; patternIndexI < row.length; patternIndexI++, matrixIndexI++) {
+                    if (!take(matrixIndexI, matrixIndexJ) || !pPattern[patternIndexJ][patternIndexI]) {
+                        continue;
+                    }
+
+                    result.push(take(matrixIndexI, matrixIndexJ));
+                }
+            }
+
+            return result;
+        };
 		
 		public function remove(pX:int, pY:int):void {
 			var cols:Dictionary = _rows[pX];
@@ -122,7 +167,7 @@ package ncollections {
 			}
 
             if (pX <= _minX) {
-                _minX = pX - 1;
+                _minX = pX;
             }
 			
 			if (pX >= _maxX) {
