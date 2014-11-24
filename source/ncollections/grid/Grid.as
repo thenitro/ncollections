@@ -23,8 +23,8 @@ package ncollections.grid {
 		};
 		
 		override public function add(pX:int, pY:int, pObject:Object):Object {
-			if (pObject) {
-				pObject.updateIndex(pX, pY);
+			if (pObject is IGridObject) {
+                (pObject as IGridObject).updateIndex(pX, pY);
 			}
 
 			return super.add(pX, pY, pObject);
