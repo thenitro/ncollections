@@ -85,7 +85,7 @@ package ncollections {
 		};
 		
 		public function add(pX:int, pY:int, pObject:Object):Object {
-			var cols:Dictionary = takeCols(pX);
+			var cols:Dictionary = takeCol(pX);
 				cols[pY] = pObject;
 
             if (pY <= _minY) {
@@ -158,7 +158,7 @@ package ncollections {
 			delete cols[pY];
 		};
 		
-		public function takeCols(pX:int):Dictionary {
+		public function takeCol(pX:int):Dictionary {
 			var cols:Dictionary = _rows[pX];
 			
 			if (!cols) {
@@ -176,6 +176,26 @@ package ncollections {
 			
 			return cols;
 		};
+
+       public function calcColItems(pY:int):int {
+           var result:int = 0;
+
+           for (var i:int = minX; i < maxX; i++) {
+               if (take(i, pY)) {
+                   result++;
+               }
+           }
+
+           return result;
+       };
+
+        public function removeLastCol():void {
+            for (var i:int = minX; i < maxX; i++) {
+                remove(i, _maxY - 1);
+            }
+
+            _maxY--;
+        };
 		
 		public function swap(pObjectAX:int, pObjectAY:int, 
 							 pObjectBX:int, pObjectBY:int):void {
