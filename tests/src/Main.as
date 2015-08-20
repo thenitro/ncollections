@@ -9,8 +9,11 @@ package {
 
         public function Main() {
             _testCore = new FlexUnitCore();
+
             _testCore.addListener(new TraceListener());
+
             _testCore.run(MatrixMxNTest);
+            _testCore.run(HeapTest);
         };
     }
 }

@@ -3,31 +3,13 @@
   <component name="FlexBuildConfigurationManager" active="NCollectionTests">
     <configurations>
       <configuration name="NCollectionTests" pure-as="true" main-class="Main" output-file="Main.swf" output-folder="$MODULE_DIR$/out/production/NCollectionTests">
-        <dependencies target-player="15.0">
+        <dependencies target-player="18.0">
           <entries>
-            <entry library-id="db2b76b1-001c-4386-af18-3aa7f834d59a">
-              <dependency linkage="Merged" />
-            </entry>
-            <entry library-id="d95d11f0-38b6-46f3-9a11-ad539c71ddfe">
-              <dependency linkage="Merged" />
-            </entry>
-            <entry library-id="3312b01f-fecf-48a2-9b78-1ece0a905b05">
-              <dependency linkage="Merged" />
-            </entry>
-            <entry library-id="7d820608-532d-416b-bcd4-b7f94ea21a7c">
-              <dependency linkage="Merged" />
-            </entry>
-            <entry library-id="ed10f4a4-686b-43f6-bd5f-57b1a06f087b">
-              <dependency linkage="Merged" />
-            </entry>
-            <entry library-id="4f91e4d1-4368-4b7c-94fd-6eaa834ad09b">
-              <dependency linkage="Merged" />
-            </entry>
-            <entry library-id="8c48388d-2b1b-4800-84d2-7f59f92f0233">
+            <entry library-id="03377672-9a4c-4169-8de2-9a371b937e70">
               <dependency linkage="Merged" />
             </entry>
           </entries>
-          <sdk name="AIR_SDK_15" />
+          <sdk name="18.0.0" />
         </dependencies>
         <compiler-options />
         <packaging-air-desktop />
@@ -45,76 +27,16 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
-    <content url="file://$MODULE_DIR$/../../npooling/source">
-      <sourceFolder url="file://$MODULE_DIR$/../../npooling/source" isTestSource="false" />
+    <content url="file://D:/npooling/source">
+      <sourceFolder url="file://D:/npooling/source" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="AIR_SDK_15" jdkType="Flex SDK Type (new)" />
+    <orderEntry type="jdk" jdkName="18.0.0" jdkType="Flex SDK Type (new)" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library" exported="">
       <library type="flex">
-        <properties id="db2b76b1-001c-4386-af18-3aa7f834d59a" />
+        <properties id="03377672-9a4c-4169-8de2-9a371b937e70" />
         <CLASSES>
-          <root url="jar://C:/flexunit/flexunit-4.2.0-20140410-as3_4.12.0.swc!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library type="flex">
-        <properties id="d95d11f0-38b6-46f3-9a11-ad539c71ddfe" />
-        <CLASSES>
-          <root url="jar://C:/flexunit/flexunit-4.2.0-20140410-flex_4.12.0.swc!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library type="flex">
-        <properties id="3312b01f-fecf-48a2-9b78-1ece0a905b05" />
-        <CLASSES>
-          <root url="jar://C:/flexunit/flexunit-aircilistener-4.2.0-20140410-4.12.0.swc!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library type="flex">
-        <properties id="7d820608-532d-416b-bcd4-b7f94ea21a7c" />
-        <CLASSES>
-          <root url="jar://C:/flexunit/flexunit-cilistener-4.2.0-20140410-4.12.0.swc!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library type="flex">
-        <properties id="ed10f4a4-686b-43f6-bd5f-57b1a06f087b" />
-        <CLASSES>
-          <root url="jar://C:/flexunit/flexunit-flexcoverlistener-4.2.0-20140410-4.12.0.swc!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library type="flex">
-        <properties id="4f91e4d1-4368-4b7c-94fd-6eaa834ad09b" />
-        <CLASSES>
-          <root url="jar://C:/flexunit/flexunit-uilistener-4.2.0-20140410-4.12.0.swc!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library type="flex">
-        <properties id="8c48388d-2b1b-4800-84d2-7f59f92f0233" />
-        <CLASSES>
-          <root url="jar://C:/flexunit/fluint-extensions-4.2.0-20140410-4.12.0.swc!/" />
+          <root url="jar://D:/flexunit_for_starling/libs/flexunit-4.2.0-20140410-as3_4.12.0.swc!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -122,4 +44,3 @@
     </orderEntry>
   </component>
 </module>
-
