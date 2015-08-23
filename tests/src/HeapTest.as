@@ -3,6 +3,7 @@ package {
 
     import org.flexunit.asserts.assertEquals;
     import org.flexunit.asserts.assertFalse;
+    import org.flexunit.asserts.assertTrue;
 
     public class HeapTest {
         public function HeapTest() {
@@ -14,6 +15,14 @@ package {
 
             assertEquals(Heap, heap.reflection);
             assertFalse(heap.disposed);
+        }
+
+        [Test]
+        public function headDisposeTest():void {
+            var heap:Heap = new Heap();
+                heap.dispose();
+
+            assertTrue(heap.disposed);
         }
         
         [Test]
