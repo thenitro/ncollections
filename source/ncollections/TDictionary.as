@@ -24,7 +24,8 @@ package ncollections {
 			
 			_count = 0;
 		};
-		
+
+		[Inline]
 		public static function get EMPTY():TDictionary {
 			var result:TDictionary = _pool.get(TDictionary) as TDictionary;
 			
